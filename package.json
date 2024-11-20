@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run": "node index.ts"
+    "run": "ts-node index.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@types/node": "^22.9.0"
+    "@types/node": "^22.9.0",
+    "ts-node": "^10.9.2"
   }
 }

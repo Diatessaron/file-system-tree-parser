@@ -1,9 +1,10 @@
 import fs from "fs";
+import path from "path";
 
 function init() {
     const args = process.argv.slice(2);
-    let dirPath = '.';
-    let givenDepth = 1;
+    let dirPath: string;
+    let givenDepth: number;
 
     for (let i = 0; i < args.length; i++) {
         switch (args[i]) {
@@ -38,26 +39,22 @@ function init() {
 
 const { dirPath, givenDepth } = init();
 
-function traverseFileStructure(dirPath: string, depth: number = 0) {
-    if (givenDepth < depth) return;
-    fs.readdir(dirPath, (err, files) => {
-        if (err) {
-            console.error(`Could not read directory ${dirPath}:`, err);
-            return;
-        }
+function traverseFileStructure(currentPath: string, depth: number = 0, prefix: string) {
+    if (depth > givenDepth) return;
 
-        files.forEach((element) => {
-            const fullPath = dirPath + element;
-            const tabulations = '\t'.repeat(depth);
-            fs.stat(fullPath, (err, stats) => {
-                if (stats.isDirectory()) {
-                    console.log(tabulations + element)
-                    traverseFileStructure(fullPath)
-                }
-            console.log(element);
-            });
-        });
-    });
+    let items = fs.readdirSync(currentPath);
+
+    items.forEach((item) => {
+        const fullPath = path.join(currentPath, item);
+        const stats = fs.statSync(fullPath);
+
+        console.log(`${prefix}└── ${item}${stats.isDirectory() ? '/' : ''}`)
+
+        if (stats.isDirectory()) {
+            traverseFileStructure(fullPath, depth + 1, prefix + '    ');
+        }
+    })
 }
 
-traverseFileStructure(dirPath, givenDepth)
+console.log(path.basename(dirPath) + '/');
+traverseFileStructure(dirPath, 1, '')
