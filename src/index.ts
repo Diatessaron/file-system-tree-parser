@@ -1,5 +1,5 @@
-import fs from "fs";
 import path from "path";
+import { TraverseFileStructureService } from "./traverseFileStructureService";
 
 function init() {
     const args = process.argv.slice(2);
@@ -39,22 +39,5 @@ function init() {
 
 const { dirPath, givenDepth } = init();
 
-function traverseFileStructure(currentPath: string, depth: number = 0, prefix: string) {
-    if (depth > givenDepth) return;
-
-    let items = fs.readdirSync(currentPath);
-
-    items.forEach((item) => {
-        const fullPath = path.join(currentPath, item);
-        const stats = fs.statSync(fullPath);
-
-        console.log(`${prefix}└── ${item}${stats.isDirectory() ? '/' : ''}`)
-
-        if (stats.isDirectory()) {
-            traverseFileStructure(fullPath, depth + 1, prefix + '    ');
-        }
-    })
-}
-
 console.log(path.basename(dirPath) + '/');
-traverseFileStructure(dirPath, 1, '')
+new TraverseFileStructureService(givenDepth).traverseFileStructure(dirPath, 1, '')
