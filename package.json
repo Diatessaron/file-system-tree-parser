@@ -4,9 +4,7 @@
   "main": "index.js",
   "scripts": {
     "run": "ts-node src/index.ts",
-    "lint": "eslint --fix --ext .js,.jsx .",
-    "test": "jest",
-    "prettier": "npx prettier --check ."
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -18,10 +16,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/mock-fs": "^4.13.4",
-    "@typescript-eslint/eslint-plugin": "^8.16.0",
-    "@typescript-eslint/parser": "^8.16.0",
     "mock-fs": "^5.4.1",
-    "prettier": "^3.4.1",
     "ts-jest": "^29.2.5"
   }
 }
