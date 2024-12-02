@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run": "ts-node index.ts"
+    "run": "ts-node src/index.ts",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -11,5 +12,11 @@
   "dependencies": {
     "@types/node": "^22.9.0",
     "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/mock-fs": "^4.13.4",
+    "mock-fs": "^5.4.1",
+    "ts-jest": "^29.2.5"
   }
 }
