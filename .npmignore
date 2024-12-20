@@ -1,0 +1,13 @@
+src
+tsconfig.json
+__test__/*
+*.log
+node_modules
+src/*.map
+coverage/*
+temp/*
+test/*
+.idea/*
+.gitignore
+jest.config.ts
+jest.config.js

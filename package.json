@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run": "ts-node src/index.ts",
+    "build": "tsc",
+    "run": "node src/index.js",
     "test": "jest"
   },
   "author": "",
@@ -18,5 +19,8 @@
     "@types/mock-fs": "^4.13.4",
     "mock-fs": "^5.4.1",
     "ts-jest": "^29.2.5"
+  },
+  "bin": {
+    "mycli": "./src/index.js"
   }
 }

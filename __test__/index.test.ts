@@ -6,7 +6,6 @@ describe('File Tree Traversal Script', () => {
 
     beforeEach(() => {
         consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-
     })
 
     afterEach(() => {
